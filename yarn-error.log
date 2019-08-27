@@ -1,0 +1,49 @@
+Arguments: 
+  /usr/local/bin/node /usr/share/yarn/bin/yarn.js add gh-pages
+
+PATH: 
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.17.3
+
+Node version: 
+  12.9.1
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: EACCES: permission denied, unlink '/home/ryan/personalProjects/ryan-keswick.github.io/node_modules/@babel/runtime/node_modules/regenerator-runtime/LICENSE'
+
+npm manifest: 
+  {
+    "name": "ryans_website",
+    "version": "0.1.0",
+    "private": true,
+    "homepage": "https://ryan-keswick.github.io/",
+    "dependencies": {
+      "axios": "^0.19.0",
+      "gh-pages": "^2.1.1",
+      "react": "^16.9.0",
+      "react-dom": "^16.9.0",
+      "react-router-dom": "^5.0.1",
+      "react-scripts": "0.9.5",
+      "uuid": "^3.3.3"
+    },
+    "devDependencies": {},
+    "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test --env=jsdom",
+      "eject": "react-scripts eject",
+      "predeploy": "yarn run build",
+      "deploy": "gh-pages -d build"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
