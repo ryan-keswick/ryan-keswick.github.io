@@ -1,18 +1,65 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Todos from './components/Todos';
 import './App.css';
+import Header from './components/layout/Header';
+import AddTodo from './components/AddTodo';
+import uuid from 'uuid';
 
 class App extends Component {
+  state = {
+    todos: [
+      {
+        id: uuid.v4(),
+        title: 'Take out the trash',
+        completed: false
+      },
+      {
+        id: uuid.v4(),
+        title: 'Get Summer Internship',
+        completed: false
+      },
+      {
+        id: uuid.v4(),
+        title: 'Eat Lunch',
+        completed: false
+      }
+    ]
+  }
+
+  // Toggles Complete
+  markComplete = (id) => {
+    this.setState({ todos: this.state.todos.map(todo =>  {
+      if(todo.id === id) {
+        todo.completed = !todo.completed;
+      }
+      return todo;
+    }) });
+  }
+
+  // Deletes Todo
+  delTodo = (id) => {
+    this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)]});
+  }
+
+// Adds a todo
+  addTodo = (title) => {
+    const newTodo = {
+      id: uuid.v4(),
+      title,
+      completed: false
+    }
+    this.setState({ todos: [...this.state.todos, newTodo]})
+  }
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="container">
+          <Header />
+          <AddTodo addTodo={this.addTodo}/>
+          <Todos todos={this.state.todos} markComplete={this.markComplete} 
+          delTodo={this.delTodo} />
+          </div>
       </div>
     );
   }
